@@ -1,13 +1,14 @@
 const axios = require('axios')
+const config = require('./config.json')
 
 module.exports = function (request, response) {
 
-  const api_key = '3b40713aa4cbd52de8eb4338007968a5-1053eade-02da1637';
+  const api_key = config.api_key;
   const domain = 'sandbox032e3089bedb4b49ab3675a1b1f66763.mailgun.org';
   const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
   const toBrokenLines = (obj) => {
-    let body = []
+    let body = [' ']
     for (let prop in obj) {
       body.push(`${prop}: ${obj[prop]}`)
     }
